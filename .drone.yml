@@ -13,4 +13,5 @@ steps:
 
 volumes:
   - name: src
-    host: /src
+    host: 
+      path: /src
