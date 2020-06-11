@@ -4,7 +4,13 @@ name: default
 
 steps:
 - name: greeting
-  image: golang:1.12
+  image: python:3.8
+  volumes:
+    - name: src
+      path: /src
   commands:
-  - go build
-  - go test
+  - python src/main.py
+
+volumes:
+  - name: src
+    host: ./src
