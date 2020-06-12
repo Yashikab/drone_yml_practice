@@ -2,8 +2,9 @@ kind: pipeline
 type: docker
 name: default
 
-common: &build
-  image: python:3.8
+steps:
+- name: greeting
+  image: python:3.7
   commands:
     - pwd
     - ls -a
@@ -17,12 +18,8 @@ common: &build
     events:
       - pull_request
 
-steps:
-- name: greeting
-  <<: *build
-
 - name: merge
-  <<: *build
+  image: python:3.7
   commands:
     - pip install pipenv
     - pipenv install --system
