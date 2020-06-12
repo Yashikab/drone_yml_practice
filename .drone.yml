@@ -15,14 +15,15 @@ steps:
     events:
       - pull_request
 
-- name: merge
-  image: python:3.7
-  commands:
-    - pip install pipenv
-    - pipenv install --system
-    - python main2.py
-  when:
-    branch:
-      - master
-    events:
-      - push
+steps:
+  - name: merge
+    image: python:3.7
+    commands:
+      - pip install pipenv
+      - pipenv install --system
+      - python main2.py
+    when:
+      branch:
+        - master
+      events:
+        - push
