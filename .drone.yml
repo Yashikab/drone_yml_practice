@@ -15,6 +15,9 @@ steps:
 - name: greeting
   <<: *build
   when:
+    branch:
+      exclude:
+        - master
     events:
       - pull_request
 
