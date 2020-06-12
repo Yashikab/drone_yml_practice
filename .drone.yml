@@ -2,10 +2,33 @@ kind: pipeline
 type: docker
 name: default
 
-steps:
-- name: greeting
+common: &build
   image: python:3.8
   commands:
     - pwd
     - ls -a
+    - pip install pipenv
+    - pipenv install --system
     - python src/main.py
+  when:
+    branch:
+      exclude:
+        - master
+    events:
+      - pull_request
+
+steps:
+- name: greeting
+  <<: *build
+
+- name: merge
+  <<: *build
+  commands:
+    - pip install pipenv
+    - pipenv install --system
+    - python main2.py
+  when:
+    branch:
+      - master
+    events:
+      push
