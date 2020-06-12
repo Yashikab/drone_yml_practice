@@ -7,6 +7,7 @@ common: &build
   commands:
     - pwd
     - ls -a
+    - pip install pipenv
     - pipenv install --system
     - python src/main.py
 
@@ -20,6 +21,7 @@ steps:
 - name: merge
   <<: *build
   commands:
+    - pip install pipenv
     - pipenv install --system
     - python main2.py
   when:
