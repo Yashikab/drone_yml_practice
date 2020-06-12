@@ -16,7 +16,7 @@ steps:
   <<: *build
   when:
     events:
-      - pull_requests
+      - pull_request
 
 - name: merge
   <<: *build
