@@ -25,3 +25,5 @@ steps:
   when:
     branch:
       - master
+    events:
+      push
