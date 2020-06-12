@@ -6,4 +6,6 @@ steps:
 - name: greeting
   image: python:3.8
   commands:
+    - pwd
+    - ls -a
     - python src/main.py
