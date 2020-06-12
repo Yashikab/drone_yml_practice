@@ -12,9 +12,6 @@ steps:
     - pipenv install --system
     - python src/main.py
   when:
-    branch:
-      exclude:
-        - master
     events:
       - pull_request
 
@@ -28,4 +25,4 @@ steps:
     branch:
       - master
     events:
-      push
+      - push
