@@ -4,8 +4,19 @@ name: default
 
 steps:
 - name: greeting
+  & build
   image: python:3.8
   commands:
     - pwd
     - ls -a
+    - pipenv install --system
     - python src/main.py
+  when:
+    events:
+      - pull_requests
+
+- name: merge
+  <<: *build
+  commands:
+    - pipenv install --system
+    - python main2.py
