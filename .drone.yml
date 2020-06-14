@@ -6,8 +6,8 @@ steps:
 - name: greeting
   image: python:3.7
   commands:
-    - pwd
-    - ls -a
+    - echo "install reviewdog"
+    - curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s
     - pip install pipenv
     - pipenv install --system
     - python src/main.py
