@@ -10,11 +10,11 @@ steps:
       from_secret: reviewdog
   commands:
     - echo "install reviewdog"
-    - go get -u github.com/reviewdog/reviewdog/cmd/reviewdog
+    - curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s
     - pip install pipenv==2018.11.26
     - pipenv install --dev --system
     - pip freeze
-    - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
+    - ./bin/reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
   when:
     event:
       - pull_request
