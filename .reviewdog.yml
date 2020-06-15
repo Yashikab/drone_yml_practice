@@ -2,6 +2,6 @@ runner:
     pylint:
       cmd: flake8 ./ # (required)
       format:
-        - checkstyle
+        - "checkstyle"
       name: reviewdog # (optional. you can overwrite <tool-name> defined by runner key)
       level: info
