@@ -11,7 +11,7 @@ steps:
   commands:
     - echo "install reviewdog"
     - curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s
-    - pip install pipenv
+    - pip install pipenv==2018.11.26
     - pipenv install --system
     - ls -a
     - pycodestyle ./src/ | ./bin/reviewdog -efm="%f:%l:%c:%m" -reporter=github-pr-review
