@@ -14,7 +14,7 @@ steps:
     - pip install pipenv==2018.11.26
     - pipenv install --dev --system
     - pip freeze
-    - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-check
+    - ./bin/reviewdog -conf=./.reviewdog.yml -reporter=github-pr-check
   when:
     event:
       - pull_request
