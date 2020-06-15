@@ -2,4 +2,5 @@
 
 import os
 
-print('hello world yashio!')
+print(f'hello world yashio!')
+
