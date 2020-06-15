@@ -14,7 +14,7 @@ steps:
     - pip install pipenv==2018.11.26
     - pipenv install --dev --system
     - pip freeze
-    - flake8 ./src/ | ./bin/reviewdog -f=checkstyle -reporter=github-pr-review
+    - flake8 ./src/ --format=checkstyle| ./bin/reviewdog -f=checkstyle -reporter=github-pr-review
   when:
     event:
       - pull_request
