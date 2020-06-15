@@ -10,7 +10,8 @@ steps:
     - curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s
     - pip install pipenv
     - pipenv install --system
-    - python src/main.py
+    - echo REVIEWDOG_GITHUB_API_TOKEN
+    - pycodestyle ./src/ | reviewdog -reporter=github-pr-review
   when:
     event:
       - pull_request
