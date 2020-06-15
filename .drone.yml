@@ -5,6 +5,9 @@ name: default
 steps:
 - name: greeting
   image: python:3.7
+  environment:
+    REVIEWDOG_GITHUB_API_TOKEN:
+      from_secret: reviewdog
   commands:
     - echo "install reviewdog"
     - curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s
@@ -12,7 +15,7 @@ steps:
     - pipenv install --system
     - echo $REVIEWDOG_GITHUB_API_TOKEN
     - ls -a
-    - pycodestyle ./src/ | reviewdog -reporter=github-pr-review
+    - pycodestyle ./src/ | ./bin/reviewdog -reporter=github-pr-review
   when:
     event:
       - pull_request
