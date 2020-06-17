@@ -4,7 +4,7 @@ name: default
 
 steps:
 - name: reviewdog
-  image: myreviewdog
+  image: yashikab/myreviewdog:latest
   environment:
     REVIEWDOG_GITHUB_API_TOKEN:
       from_secret: reviewdog
