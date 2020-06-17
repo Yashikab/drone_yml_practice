@@ -14,7 +14,7 @@ steps:
     - ls -a
     - which reviewdog
     - echo $PATH
-    - ./bin/reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
+    - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
   when:
     event:
       - pull_request
