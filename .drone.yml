@@ -3,15 +3,12 @@ type: docker
 name: default
 
 steps:
-- name: greeting
-  image: python:3.7
+- name: reviewdog
+  image: myreviewdog
   environment:
     REVIEWDOG_GITHUB_API_TOKEN:
       from_secret: reviewdog
   commands:
-    - echo "install reviewdog"
-    - curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s
-    - pip install pipenv==2018.11.26
     - pipenv install --dev --system
     - pip freeze
     - ./bin/reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
