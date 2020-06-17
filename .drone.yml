@@ -9,6 +9,7 @@ steps:
     REVIEWDOG_GITHUB_API_TOKEN:
       from_secret: reviewdog
   commands:
+    - apk --update add git
     - pipenv install --dev --system
     - pip freeze
     - ls -a
