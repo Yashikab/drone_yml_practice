@@ -9,6 +9,9 @@ flake8 = "*"
 [packages]
 pycodestyle = "*"
 flake8-checkstyle = "*"
+pyjwt = "*"
+requests = "*"
+cryptography = "*"
 
 [requires]
 python_version = "3.7"
