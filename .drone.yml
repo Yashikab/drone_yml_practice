@@ -19,14 +19,30 @@ steps:
     event:
       - pull_request
 
-- name: merge
+- name: gettoken
   image: python:3.7
+  environment:
+    PRIVATE_KEY:
+      from_secret: github_pri_key
+    INSTALLATION_ID:
+      from_secret: installation_id
   commands:
-    - pip install pipenv
-    - pipenv install --system
-    - python main2.py
+    - pipenv install --dev --system
+    - python src/get_token.py
   when:
     branch:
-      - master
+      exclude:
+        - master
     event:
       - push
+# - name: merge
+#   image: python:3.7
+#   commands:
+#     - pip install pipenv
+#     - pipenv install --system
+#     - python main2.py
+#   when:
+#     branch:
+#       - master
+#     event:
+#       - push
