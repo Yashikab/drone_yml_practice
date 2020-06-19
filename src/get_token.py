@@ -16,7 +16,7 @@ def make_auth_header(installation_id):
     payload = {
         "iat": utcnow,
         "exp": utcnow + duration,
-        "iss": 2510
+        "iss": os.getenv("APP_ID")
     }
     pem = get_private_pem()
     encoded = jwt.encode(payload, pem, "RS256")
