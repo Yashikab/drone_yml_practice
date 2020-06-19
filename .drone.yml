@@ -3,21 +3,21 @@ type: docker
 name: default
 
 steps:
-- name: reviewdog
-  image: yashikab/myreviewdog:latest
-  environment:
-    REVIEWDOG_GITHUB_API_TOKEN:
-      from_secret: reviewdog
-  commands:
-    - pipenv install --dev --system
-    - pip freeze
-    - ls -a
-    - which reviewdog
-    - echo $PATH
-    - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
-  when:
-    event:
-      - pull_request
+# - name: reviewdog
+#   image: yashikab/myreviewdog:latest
+#   environment:
+#     REVIEWDOG_GITHUB_API_TOKEN:
+#       from_secret: reviewdog
+#   commands:
+#     - pipenv install --dev --system
+#     - pip freeze
+#     - ls -a
+#     - which reviewdog
+#     - echo $PATH
+#     - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
+#   when:
+#     event:
+#       - pull_request
 
 - name: gettoken
   image: python:3.7
