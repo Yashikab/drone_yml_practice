@@ -28,7 +28,7 @@ steps:
       from_secret: installation_id
   commands:
     - pip install pipenv
-    - pipenv install --dev --system
+    - pipenv install --system
     - python src/get_token.py
   when:
     branch:
