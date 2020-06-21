@@ -17,6 +17,7 @@ steps:
     #   from_secret: reviewdog
   commands:
     - pip freeze
+    - pwd
     - ls -a
     - ls -a ./src
     # - sh src/token2env.sh
