@@ -1,8 +1,7 @@
-import os
 from datetime import datetime, timedelta
 import jwt
+import os
 import requests
-
 
 def get_private_pem():
     key = os.getenv("PRIVATE_KEY")
@@ -29,14 +28,16 @@ def make_auth_header(installation_id):
     r = requests.post(auth_url, headers=headers)
 
     if not r.ok:
-        print(r.json()["message"])
+        print(r.json()['message'])
         r.raise_for_status()
-    token = r.json()["token"]
+    token = r.json()['token']
+    with open('token.conf', 'w') as f:
+        f.write(token)
     return {
-        "Authorization": "token {}".format(token)
+        'Authorization': f'token {token}',
     }
 
 
-if __name__ == "__main__":
-    installation_id = os.getenv("INSTALLATION_ID")
-    print(make_auth_header(installation_id))
+if __name__ == '__main__':
+    installation_id = os.getenv('INSTALLATION_ID')
+    make_auth_header(installation_id)
