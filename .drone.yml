@@ -17,12 +17,15 @@ steps:
   commands:
     - pipenv install --dev --system
     - pip freeze
-    - ls -a
     - python src/get_token.py
+    - ls -a
+    - token_content=`cat token.conf`
+    - export REVIEWDOG_GITHUB_API_TOKEN=$token_content
     - echo $REVIEWDOG_GITHUB_API_TOKEN
     - which reviewdog
     - echo $PATH
     - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
+    - rm token.conf
   when:
     event:
       - pull_request
