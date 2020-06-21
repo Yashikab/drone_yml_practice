@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import jwt
 import os
 import requests
-
+import subprocess
 
 def get_private_pem():
     key = os.getenv("PRIVATE_KEY")
@@ -32,7 +32,7 @@ def make_auth_header(installation_id):
         print(r.json()['message'])
         r.raise_for_status()
     token = r.json()['token']
-    os.environ['REVIEWDOG_GITHUB_API_TOKEN'] = token
+    subprocess.run(['export', f'REVIEWDOG_GITHUB_API_TOKEN={token}'])
     return {
         'Authorization': f'token {token}',
     }
