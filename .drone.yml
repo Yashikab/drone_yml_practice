@@ -16,6 +16,7 @@ steps:
     # REVIEWDOG_GITHUB_API_TOKEN:
     #   from_secret: reviewdog
   commands:
+    - pip freeze
     - ls -a
     - ls -a ./src
     # - sh src/token2env.sh
