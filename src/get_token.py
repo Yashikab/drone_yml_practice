@@ -29,14 +29,15 @@ def make_auth_header(installation_id):
     r = requests.post(auth_url, headers=headers)
 
     if not r.ok:
-        print(r.json()["message"])
+        print(r.json()['message'])
         r.raise_for_status()
-    token = r.json()["token"]
+    token = r.json()['token']
+    os.environ['REVIEWDOG_GITHUB_API_TOKEN'] = token
     return {
-        "Authorization": "token {}".format(token)
+        'Authorization': f'token {token}',
     }
 
 
-if __name__ == "__main__":
-    installation_id = os.getenv("INSTALLATION_ID")
+if __name__ == '__main__':
+    installation_id = os.getenv('INSTALLATION_ID')
     print(make_auth_header(installation_id))

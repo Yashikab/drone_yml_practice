@@ -3,24 +3,8 @@ type: docker
 name: default
 
 steps:
-# - name: reviewdog
-#   image: yashikab/myreviewdog:latest
-#   environment:
-#     REVIEWDOG_GITHUB_API_TOKEN:
-#       from_secret: reviewdog
-#   commands:
-#     - pipenv install --dev --system
-#     - pip freeze
-#     - ls -a
-#     - which reviewdog
-#     - echo $PATH
-#     - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
-#   when:
-#     event:
-#       - pull_request
-
-- name: gettoken
-  image: python:3.7
+- name: reviewdog
+  image: yashikab/myreviewdog:latest
   environment:
     PRIVATE_KEY:
       from_secret: github_pri_key
@@ -28,16 +12,40 @@ steps:
       from_secret: app_id
     INSTALLATION_ID:
       from_secret: installation_id
+    # REVIEWDOG_GITHUB_API_TOKEN:
+    #   from_secret: reviewdog
   commands:
-    - pip install pipenv
-    - pipenv install --system
+    - pipenv install --dev --system
+    - pip freeze
+    - ls -a
     - python src/get_token.py
+    - echo $REVIEWDOG_GITHUB_API_TOKEN
+    - which reviewdog
+    - echo $PATH
+    - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
   when:
-    branch:
-      exclude:
-        - master
     event:
-      - push
+      - pull_request
+
+# - name: gettoken
+#   image: python:3.7
+#   environment:
+#     PRIVATE_KEY:
+#       from_secret: github_pri_key
+#     APP_ID:
+#       from_secret: app_id
+#     INSTALLATION_ID:
+#       from_secret: installation_id
+#   commands:
+#     - pip install pipenv
+#     - pipenv install --system
+#     - python src/get_token.py
+#   when:
+#     branch:
+#       exclude:
+#         - master
+#     event:
+#       - push
 # - name: merge
 #   image: python:3.7
 #   commands:
