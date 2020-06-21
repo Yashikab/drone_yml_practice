@@ -4,6 +4,7 @@ name: default
 
 steps:
 - name: reviewdog
+  pull: always
   image: yashikab/myreviewdog:latest
   environment:
     PRIVATE_KEY:
