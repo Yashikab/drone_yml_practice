@@ -15,15 +15,16 @@ steps:
     # REVIEWDOG_GITHUB_API_TOKEN:
     #   from_secret: reviewdog
   commands:
-    - pipenv install --dev --system
-    - pip freeze
-    - python src/get_token.py
-    - ls -a
-    - export REVIEWDOG_GITHUB_API_TOKEN=`cat token.conf`
-    - which reviewdog
-    - echo $PATH
-    - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
-    - rm token.conf
+    - echo $REVIEWDOG_GITHUB_API_TOKEN
+    # - pipenv install --dev --system
+    # - pip freeze
+    # - python src/get_token.py
+    # - ls -a
+    # - export REVIEWDOG_GITHUB_API_TOKEN=`cat token.conf`
+    # - which reviewdog
+    # - echo $PATH
+    # - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
+    # - rm token.conf
   when:
     event:
       - pull_request
