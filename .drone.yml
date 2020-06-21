@@ -19,9 +19,7 @@ steps:
     - pip freeze
     - python src/get_token.py
     - ls -a
-    - token_content=`cat token.conf`
-    - export REVIEWDOG_GITHUB_API_TOKEN=$token_content
-    - echo $REVIEWDOG_GITHUB_API_TOKEN
+    - export REVIEWDOG_GITHUB_API_TOKEN=`cat token.conf`
     - which reviewdog
     - echo $PATH
     - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review

@@ -40,4 +40,4 @@ def make_auth_header(installation_id):
 
 if __name__ == '__main__':
     installation_id = os.getenv('INSTALLATION_ID')
-    print(make_auth_header(installation_id))
+    make_auth_header(installation_id)
