@@ -19,7 +19,7 @@ steps:
     - ls -a ..
     - ls -a ../..
     - ls -a /src
-    # - sh src/token2env.sh
+    - sh /src/token2env.sh
     - echo $REVIEWDOG_GITHUB_API_TOKEN
     # - pipenv install --dev --system
     # - pip freeze
