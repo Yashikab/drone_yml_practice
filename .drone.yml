@@ -16,7 +16,6 @@ steps:
     # REVIEWDOG_GITHUB_API_TOKEN:
     #   from_secret: reviewdog
   commands:
-    - echo $REVIEWDOG_GITHUB_API_TOKEN
     - . /src/token2env.sh
     - echo $REVIEWDOG_GITHUB_API_TOKEN
     # - pipenv install --dev --system
@@ -26,7 +25,7 @@ steps:
     # - export REVIEWDOG_GITHUB_API_TOKEN=`cat token.conf`
     # - which reviewdog
     # - echo $PATH
-    # - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
+    - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
     # - rm token.conf
   when:
     event:
