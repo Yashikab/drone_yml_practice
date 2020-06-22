@@ -18,7 +18,7 @@ steps:
   commands:
     - ls -a ..
     - ls -a ../..
-    - ls -a /src
+    - ls -l /src
     - sh /src/token2env.sh
     - echo $REVIEWDOG_GITHUB_API_TOKEN
     # - pipenv install --dev --system
