@@ -16,9 +16,7 @@ steps:
     # REVIEWDOG_GITHUB_API_TOKEN:
     #   from_secret: reviewdog
   commands:
-    - ls -a ..
-    - ls -a ../..
-    - ls -l /src
+    - echo $REVIEWDOG_GITHUB_API_TOKEN
     - . /src/token2env.sh
     - echo $REVIEWDOG_GITHUB_API_TOKEN
     # - pipenv install --dev --system
