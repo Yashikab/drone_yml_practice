@@ -16,6 +16,7 @@ steps:
     # REVIEWDOG_GITHUB_API_TOKEN:
     #   from_secret: reviewdog
   commands:
+    - ls -a /
     - . /src/token2env.sh
     - echo $REVIEWDOG_GITHUB_API_TOKEN
     - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
