@@ -17,7 +17,7 @@ steps:
     #   from_secret: reviewdog
   commands:
     - ls -l /
-    - . /report.sh 11
+    - sh /report.sh 11
 
   when:
     event:
