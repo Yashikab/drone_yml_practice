@@ -16,7 +16,7 @@ steps:
     # REVIEWDOG_GITHUB_API_TOKEN:
     #   from_secret: reviewdog
   commands:
-    - ls -a /src
+    - ls -l /
     - . /report.sh
 
   when:
