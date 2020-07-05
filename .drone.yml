@@ -16,7 +16,7 @@ steps:
   commands:
     - ls -l /
     # curl テスト用
-    - . test.sh
+    - . ${PWD}/test.sh
   when:
     event:
       - pull_request
