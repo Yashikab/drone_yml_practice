@@ -15,7 +15,8 @@ steps:
       from_secret: installation_id
   commands:
     - ls -l /
-    - sh /report.sh ./src
+    - . /report.sh ./src
+    - echo $REVIEWDOG_GITHUB_API_TOKEN
 
   when:
     event:
