@@ -16,7 +16,7 @@ steps:
   commands:
     - ls -l /
     # curl テスト用
-    - source test.sh
+    - . test.sh
   when:
     event:
       - pull_request
