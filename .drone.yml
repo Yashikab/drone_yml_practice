@@ -16,8 +16,7 @@ steps:
   commands:
     - ls -l /
     # curl テスト用
-    # - . ${PWD}/test.sh
-    - pwd
+    - . /drone/src/test.sh
   when:
     event:
       - pull_request
