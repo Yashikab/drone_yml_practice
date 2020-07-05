@@ -4,7 +4,8 @@ name: default
 
 steps:
 - name: reviewdog
-  image: yashikab/myreviewdog:latest
+  pull: always
+  image: yashikab/mydog:python-dev
   environment:
     PRIVATE_KEY:
       from_secret: github_pri_key
@@ -12,49 +13,10 @@ steps:
       from_secret: app_id
     INSTALLATION_ID:
       from_secret: installation_id
-    # REVIEWDOG_GITHUB_API_TOKEN:
-    #   from_secret: reviewdog
   commands:
-    - pipenv install --dev --system
-    - pip freeze
-    - python src/get_token.py
-    - ls -a
-    - export REVIEWDOG_GITHUB_API_TOKEN=`cat token.conf`
-    - which reviewdog
-    - echo $PATH
-    - reviewdog -conf=./.reviewdog.yml -reporter=github-pr-review
-    - rm token.conf
+    - ls -l /
+    # curl テスト用
+    - . /drone/src/test.sh
   when:
     event:
       - pull_request
-
-# - name: gettoken
-#   image: python:3.7
-#   environment:
-#     PRIVATE_KEY:
-#       from_secret: github_pri_key
-#     APP_ID:
-#       from_secret: app_id
-#     INSTALLATION_ID:
-#       from_secret: installation_id
-#   commands:
-#     - pip install pipenv
-#     - pipenv install --system
-#     - python src/get_token.py
-#   when:
-#     branch:
-#       exclude:
-#         - master
-#     event:
-#       - push
-# - name: merge
-#   image: python:3.7
-#   commands:
-#     - pip install pipenv
-#     - pipenv install --system
-#     - python main2.py
-#   when:
-#     branch:
-#       - master
-#     event:
-#       - push
