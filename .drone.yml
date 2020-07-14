@@ -15,6 +15,7 @@ steps:
       from_secret: installation_id
   commands:
     - ls -l /
+    - echo $GIT_REVISION
     # - echo $DRONE_REPO_OWNER
     # - echo $DRONE_REPO_NAME
     # - echo $DRONE_PULL_REQUEST
