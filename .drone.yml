@@ -7,12 +7,12 @@ steps:
   pull: always
   image: yashikab/mydog:python-dev
   environment:
-    PRIVATE_KEY:
-      from_secret: github_pri_key
-    APP_ID:
-      from_secret: app_id
-    INSTALLATION_ID:
-      from_secret: installation_id
+    # PRIVATE_KEY:
+    #   from_secret: github_pri_key
+    # APP_ID:
+    #   from_secret: app_id
+    # INSTALLATION_ID:
+    #   from_secret: installation_id
   commands:
     - ls -l /
     - echo $APP_ID
@@ -20,7 +20,7 @@ steps:
     # - echo $DRONE_REPO_NAME
     # - echo $DRONE_PULL_REQUEST
     # curl テスト用
-    # - . /drone/src/test.sh
+    - . /drone/src/test.sh
   when:
     event:
       - pull_request
