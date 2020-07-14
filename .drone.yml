@@ -15,12 +15,12 @@ steps:
       from_secret: installation_id
   commands:
     - ls -l /
-    - echo $GIT_REVISION
+    - echo $APP_ID
     # - echo $DRONE_REPO_OWNER
     # - echo $DRONE_REPO_NAME
     # - echo $DRONE_PULL_REQUEST
     # curl テスト用
-    - . /drone/src/test.sh
+    # - . /drone/src/test.sh
   when:
     event:
       - pull_request
