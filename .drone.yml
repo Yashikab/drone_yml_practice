@@ -15,7 +15,7 @@ steps:
       from_secret: installation_id
   commands:
     # curl テスト用
-    - . /drone/src/test.sh
+    - . /report.sh
   when:
     event:
       - pull_request
