@@ -15,7 +15,7 @@ steps:
       from_secret: installation_id
   commands:
     # curl テスト用
-    - . /report.sh ./src
+    - sh /report.sh ./src
   when:
     event:
       - pull_request
