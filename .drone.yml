@@ -3,28 +3,19 @@ type: docker
 name: default
 
 steps:
-  - name: greeting
-    image: golang:1.12
-    environment:
-      DOCKER_API_VERSION: 1.39
-    commands:
-    - go build
-    - go test
-
-# steps:
-# - name: reviewdog
-#   pull: always
-#   image: yashikab/mydog:python
-#   environment:
-#     DOCKER_API_VERSION: 1.39
-#     PRIVATE_KEY:
-#       from_secret: github_pri_key
-#     APP_ID:
-#       from_secret: app_id
-#     INSTALLATION_ID:
-#       from_secret: installation_id
-#   commands:
-#     - . /report.sh src
-#   when:
-#     event:
-#       - pull_request
+- name: reviewdog
+  pull: always
+  image: yashikab/mydog:python
+  environment:
+    DOCKER_API_VERSION: 1.39
+    PRIVATE_KEY:
+      from_secret: github_pri_key
+    APP_ID:
+      from_secret: app_id
+    INSTALLATION_ID:
+      from_secret: installation_id
+  commands:
+    - . /report.sh src
+  when:
+    event:
+      - pull_request
