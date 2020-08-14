@@ -16,7 +16,7 @@ steps:
       from_secret: installation_id
   commands:
     - echo $PATH
-    - rp_reviewdog src
+    - rp_reviwdog src
   when:
     event:
       - pull_request
