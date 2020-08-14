@@ -5,6 +5,8 @@ name: default
 steps:
   - name: greeting
     image: golang:1.12
+    environment:
+      DOCKER_API_VERSION: 1.39
     commands:
     - go build
     - go test
