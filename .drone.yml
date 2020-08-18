@@ -17,7 +17,7 @@ steps:
   commands:
     - echo $PATH
     - which pr_comment
-    - pr_comment src/hello.md
+    - pr_comment src/hello.xml
   when:
     event:
       - pull_request
