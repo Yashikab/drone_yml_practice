@@ -9,8 +9,9 @@ elif [ $1 = '--test' ]; then
     exit 0
 elif [[ $1 = *.md ]]; then
     echo "input is markdown"
+    cat $1
     curl https://api.github.com/markdown/raw \
         -X "POST" \
-        -H "Content-Type: text/x-markdown" \
+        -H "Content-Type: text/plain" \
         -d "$(cat $1)"
 fi
