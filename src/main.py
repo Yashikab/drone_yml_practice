@@ -2,3 +2,4 @@
 print('hello world yashio!')
 
 import hogehoge
+import os
