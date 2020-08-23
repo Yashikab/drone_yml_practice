@@ -19,7 +19,7 @@ steps:
     - which pr_comment
     # - rp_reviewdog src/
     # - pr_comment hello
-    - test.sh
+    - sh test.sh
   when:
     event:
       - pull_request
