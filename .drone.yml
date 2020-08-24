@@ -7,6 +7,7 @@ steps:
   pull: always
   image: yashikab/mydog:python-dev
   environment:
+    DOCKER_API_VERSION: 1.39
     PRIVATE_KEY:
       from_secret: github_pri_key
     APP_ID:
@@ -14,9 +15,10 @@ steps:
     INSTALLATION_ID:
       from_secret: installation_id
   commands:
-    - ls -l /
-    # curl テスト用
-    - . /drone/src/test.sh
+    - echo $PATH
+    - which pr_comment
+    - rp_reviewdog src/
+    # - pr_comment src/hello
   when:
     event:
       - pull_request
