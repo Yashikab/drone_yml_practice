@@ -12,6 +12,7 @@ cryptography = "*"
 flake8 = "*"
 pytest = "*"
 pytest-cov = "*"
+pycobertura = "*"
 
 [requires]
 python_version = "3.7"
