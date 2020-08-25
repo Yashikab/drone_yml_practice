@@ -18,7 +18,7 @@ steps:
     - echo $PATH
     - which pr_comment
     # - rp_reviewdog src/
-    - pr_comment cov.xml
+    - pr_comment content
   when:
     event:
       - pull_request
