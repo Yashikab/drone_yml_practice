@@ -16,6 +16,7 @@ steps:
       from_secret: installation_id
   commands:
     - echo $PATH
+    - gcloud auth list
     - which pr_comment
     - rp_reviewdog src/
     # - pr_comment content
