@@ -16,7 +16,7 @@ steps:
       from_secret: installation_id
   commands:
     - echo $PATH
-    - test.sh
+    - sh test.sh
     # - which pr_comment
     # - rp_reviewdog src/
     # # - pr_comment content
