@@ -13,5 +13,5 @@ curl \
   -X POST \
   -H "Authorization: token ${REVIEWDOG_GITHUB_API_TOKEN}" \
   -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/${DRONE_REPO_OWNER}/${DRONE_REPO_NAME}/issues/comments \
+  https://api.github.com/repos/${DRONE_REPO_OWNER}/${DRONE_REPO_NAME}/issues/${DRONE_PULL_REQUEST}/comments \
   -d '{"body":"body"}'
