@@ -9,9 +9,15 @@ echo $REVIEWDOG_GITHUB_API_TOKEN
 #      -H "Content-Type:application/json" \
 #      -d "{\"body\": \"hello world!\"}" \
 #      "https://api.github.com/repos/${DRONE_REPO_OWNER}/${DRONE_REPO_NAME}/issues/${DRONE_PULL_REQUEST}/comments/42"
+
+# curl \
+#   -X PATCH \
+#   -H "Authorization: token ${REVIEWDOG_GITHUB_API_TOKEN}" \
+#   -H "Accept: application/vnd.github.v3+json" \
+#   https://api.github.com/repos/${DRONE_REPO_OWNER}/${DRONE_REPO_NAME}/issues/comments/695684390 \
+#   -d '{"body":"body2"}'
+
 curl \
-  -X PATCH \
-  -H "Authorization: token ${REVIEWDOG_GITHUB_API_TOKEN}" \
+  -X GET \
   -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/${DRONE_REPO_OWNER}/${DRONE_REPO_NAME}/issues/comments/695684390 \
-  -d '{"body":"body2"}'
+  https://api.github.com/repos/${DRONE_REPO_OWNER}/${DRONE_REPO_NAME}/issues/${DRONE_PULL_REQUEST}/comments
