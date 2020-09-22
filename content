@@ -1,8 +1,0 @@
-Filename              Stmts    Miss  Cover    Missing
-------------------  -------  ------  -------  ---------
-main.py                   5       5  0.00%    2-8
-module/__init__.py        0       0  100.00%
-module/fizzbuzz.py        9       1  88.89%   10
-test/__init__.py          0       0  100.00%
-test/test_main.py         4       0  100.00%
-TOTAL                    18       6  66.67%
