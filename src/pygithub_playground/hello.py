@@ -4,6 +4,7 @@
 # TODO: get_token.pyをモジュール化する
 
 from github import Github
+import os
 
 with open('/src/token.conf', 'r') as f:
     access_token = f.read()
@@ -11,8 +12,10 @@ with open('/src/token.conf', 'r') as f:
 g = Github(access_token)
 
 # tutorial
-for repo in g.get_user().get_repos():
-    print(repo.name)
-    repo.edit(has_wiki=False)
-    # to see all the available attributes and methods
-    print(dir(repo))
+repo_owner = os.getenv("DRONE_REPO_OWNER")
+repo_name = os.getenv("DRONE_REPO_NAME")
+issue_no = os.getenv("DRONE_PULL_REQUEST")
+
+repo = g.get_repo(f"{repo_owner}/{repo_name}")
+issue = repo.get_issue(int(issue_no))
+print(issue)
