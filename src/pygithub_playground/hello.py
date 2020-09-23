@@ -20,4 +20,4 @@ repo = g.get_repo(f"{repo_owner}/{repo_name}")
 issue = repo.get_issue(int(issue_no))
 
 for comment in issue.get_comments():
-    print(comment.body)
+    print(comment.id, comment.body)
