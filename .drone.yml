@@ -16,14 +16,14 @@ steps:
       from_secret: installation_id
   commands:
     # - python /src/get_token.py
-    # - python src/pygithub_playground/hello.py
+    - python src/pygithub_playground/hello.py
     # - echo $PATH
     # - sh test.sh
     # - which pr_comment
-    - ls -l /src
+    # - ls -l /src
     # - rp_reviewdog src/
-    - pr_comment content
-    - rp_pytest src/
+    # - pr_comment content
+    # - rp_pytest src/
   when:
     event:
       - pull_request

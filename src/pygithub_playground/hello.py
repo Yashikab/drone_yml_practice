@@ -3,8 +3,12 @@
 # ここのテストでは、get_token.py実行後にこれを実行する(module化しない)
 # TODO: get_token.pyをモジュール化する
 
+from module.gettoken import GetToken
 from github import Github
 import os
+
+gt = GetToken()
+access_token = GetToken.meta_auth_header()
 
 with open('/src/token.conf', 'r') as f:
     access_token = f.read()
