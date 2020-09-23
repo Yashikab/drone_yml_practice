@@ -20,6 +20,7 @@ steps:
     # - echo $PATH
     # - sh test.sh
     # - which pr_comment
+    - ls -l /src
     - rp_reviewdog src/
     # # - pr_comment content
     # - rp_pytest src/
