@@ -17,6 +17,7 @@ steps:
   commands:
     # - python /src/get_token.py
     - echo $PYTHONPATH
+    - export PYTHONPATH=/src/module
     - python src/pygithub_playground/hello.py
     # - echo $PATH
     # - sh test.sh
