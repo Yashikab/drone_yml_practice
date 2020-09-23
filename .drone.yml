@@ -15,12 +15,12 @@ steps:
     INSTALLATION_ID:
       from_secret: installation_id
   commands:
-    - python /src/get_token.py
-    - python src/pygithub_playground/hello.py
+    # - python /src/get_token.py
+    # - python src/pygithub_playground/hello.py
     # - echo $PATH
     # - sh test.sh
     # - which pr_comment
-    # - rp_reviewdog src/
+    - rp_reviewdog src/
     # # - pr_comment content
     # - rp_pytest src/
   when:
