@@ -18,4 +18,6 @@ issue_no = os.getenv("DRONE_PULL_REQUEST")
 
 repo = g.get_repo(f"{repo_owner}/{repo_name}")
 issue = repo.get_issue(int(issue_no))
-print(issue)
+
+for comment in issue.get_comments():
+    print(comment.body)
