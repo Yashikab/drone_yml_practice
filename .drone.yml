@@ -16,6 +16,7 @@ steps:
       from_secret: installation_id
   commands:
     # - python /src/get_token.py
+    - echo $PYTHONPATH
     - python src/pygithub_playground/hello.py
     # - echo $PATH
     # - sh test.sh
