@@ -6,12 +6,29 @@
 from gettoken import GetToken
 from github import Github
 import os
+import subprocess
 
 gt = GetToken()
 access_token = gt.make_auth_header()
 
 # with open('/src/token.conf', 'r') as f:
 #     access_token = f.read()
+
+os.environ["REVIEWDOG_GITHUB_API_TOKEN"] = access_token
+cmd1 = ["flake8", "./src/"]
+cmd2 = [
+    "reviewdog",
+    "-reporter=github-pr-review",
+    "-f=pep8",
+    "-diff=\"git diff master\""]
+pipe = subprocess.Popen(
+    cmd1,
+    stdout=subprocess.PIPE
+)
+subprocess.run(
+    cmd2,
+    stdin=pipe.stdout
+)
 
 g = Github(access_token)
 
@@ -25,7 +42,3 @@ issue = repo.get_issue(int(issue_no))
 
 for comment in issue.get_comments():
     print(comment.id, comment.body)
-
-import sys
-
-print("hello world")
