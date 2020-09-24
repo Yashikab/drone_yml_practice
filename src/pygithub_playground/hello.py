@@ -8,7 +8,7 @@ from github import Github
 import os
 
 gt = GetToken()
-access_token = GetToken.meta_auth_header()
+access_token = gt.meta_auth_header()
 
 with open('/src/token.conf', 'r') as f:
     access_token = f.read()
