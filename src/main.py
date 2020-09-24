@@ -7,6 +7,5 @@ if __name__ == '__main__':
     print(fizzbuzz(15))
     print(fizzbuzz(11))
 
-
-import sys
-print
+import os
+import subprocess
