@@ -17,8 +17,7 @@ steps:
   commands:
     - python /src/module/gettoken.py
     - export REVIEWDOG_GITHUB_API_TOKEN=$(cat /src/token.conf)
-    - reviewdog -reporter=github-pr-review -f=pep8
-    # - flake8 ./src/ | reviewdog -f=pep8
+    - flake8 ./src/ | reviewdog -reporter=github-pr-review -f=pep8
     # - python src/pygithub_playground/hello.py
     # - echo $PATH
     # - sh test.sh
