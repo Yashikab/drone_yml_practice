@@ -25,3 +25,7 @@ issue = repo.get_issue(int(issue_no))
 
 for comment in issue.get_comments():
     print(comment.id, comment.body)
+
+import sys
+
+print("hello world")

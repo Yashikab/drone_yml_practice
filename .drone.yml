@@ -15,9 +15,11 @@ steps:
     INSTALLATION_ID:
       from_secret: installation_id
   commands:
-    # - python /src/get_token.py
-    - echo $PYTHONPATH
-    - python src/pygithub_playground/hello.py
+    - python /src/module/gettoken.py
+    - export REVIEWDOG_GITHUB_API_TOKEN=$(cat /src/token.conf)
+    - reviewdog -reporter=github-pr-review
+    # - flake8 ./src/ | reviewdog -f=pep8
+    # - python src/pygithub_playground/hello.py
     # - echo $PATH
     # - sh test.sh
     # - which pr_comment
