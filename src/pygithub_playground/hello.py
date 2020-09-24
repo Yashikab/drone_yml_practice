@@ -10,8 +10,8 @@ import os
 gt = GetToken()
 access_token = gt.make_auth_header()
 
-with open('/src/token.conf', 'r') as f:
-    access_token = f.read()
+# with open('/src/token.conf', 'r') as f:
+#     access_token = f.read()
 
 g = Github(access_token)
 
