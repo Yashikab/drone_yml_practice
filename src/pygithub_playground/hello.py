@@ -40,5 +40,10 @@ issue_no = os.getenv("DRONE_PULL_REQUEST")
 repo = g.get_repo(f"{repo_owner}/{repo_name}")
 issue = repo.get_issue(int(issue_no))
 
-for comment in issue.get_comments():
+pr = issue.as_pull_request()
+
+for comment in pr.get_review_comments():
     print(comment.id, comment.body)
+
+for review in pr.get_reviews():
+    print(review.id, review.body, review.state)
