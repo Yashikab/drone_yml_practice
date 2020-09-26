@@ -1,7 +1,6 @@
 # coding utf-8
 # python3.7
 # ここのテストでは、get_token.py実行後にこれを実行する(module化しない)
-# TODO: get_token.pyをモジュール化する
 
 from gettoken import GetToken
 from github import Github
@@ -13,22 +12,6 @@ access_token = gt.make_auth_header()
 
 # with open('/src/token.conf', 'r') as f:
 #     access_token = f.read()
-
-os.environ["REVIEWDOG_GITHUB_API_TOKEN"] = access_token
-cmd1 = ["flake8", "./src/"]
-cmd2 = [
-    "reviewdog",
-    "-reporter=github-pr-review",
-    "-f=pep8",
-    "-diff=\"git diff master\""]
-pipe = subprocess.Popen(
-    cmd1,
-    stdout=subprocess.PIPE
-)
-subprocess.run(
-    cmd2,
-    stdin=pipe.stdout
-)
 
 g = Github(access_token)
 
@@ -42,8 +25,28 @@ issue = repo.get_issue(int(issue_no))
 
 pr = issue.as_pull_request()
 
-for comment in pr.get_review_comments():
+comment_list = list(issue.get_review_comments())
+comment_list += list(pr.get_review_comments())
+
+for comment in comment_list:
     print(comment.id, comment.body)
 
 for review in pr.get_reviews():
     print(review.id, review.body, review.state)
+
+
+# os.environ["REVIEWDOG_GITHUB_API_TOKEN"] = access_token
+# cmd1 = ["flake8", "./src/"]
+# cmd2 = [
+#     "reviewdog",
+#     "-reporter=github-pr-review",
+#     "-f=pep8",
+#     "-diff=\"git diff master\""]
+# pipe = subprocess.Popen(
+#     cmd1,
+#     stdout=subprocess.PIPE
+# )
+# subprocess.run(
+#     cmd2,
+#     stdin=pipe.stdout
+# )
