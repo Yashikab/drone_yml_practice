@@ -25,7 +25,7 @@ issue = repo.get_issue(int(issue_no))
 
 pr = issue.as_pull_request()
 
-comment_list = list(issue.get_review_comments())
+comment_list = list(issue.get_comments())
 comment_list += list(pr.get_review_comments())
 
 for comment in comment_list:
