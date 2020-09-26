@@ -47,7 +47,7 @@ pipe = subprocess.Popen(
     cmd1,
     stdout=subprocess.PIPE
 )
-reviewdog_result = subprocess.run(
+reviewdog_result = subprocess.Popen(
     cmd2,
     stdin=pipe.stdout,
     stdout=subprocess.PIPE
