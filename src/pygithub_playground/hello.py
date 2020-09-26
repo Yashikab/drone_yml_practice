@@ -47,10 +47,10 @@ pipe = subprocess.Popen(
     cmd1,
     stdout=subprocess.PIPE
 )
-reviewdog_result = subprocess.Popen(
+reviewdog_result = subprocess.run(
     cmd2,
     stdin=pipe.stdout,
     stdout=subprocess.PIPE
 )
 
-print(reviewdog_result)
+print(reviewdog_result.stdout)
