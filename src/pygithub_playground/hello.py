@@ -53,4 +53,4 @@ reviewdog_result = subprocess.run(
     stdout=subprocess.PIPE
 )
 
-print(reviewdog_result.stdout.decode())
+print(reviewdog_result.stdout.decode().split('\n'))
