@@ -55,6 +55,12 @@ reviewdog_result = subprocess.run(
     stdout=subprocess.PIPE
 )
 
-review_list = reviewdog_result.stdout.decode().split('\n')
+review_list = reviewdog_result.stdout.decode()
+# 末尾改行があるため取り除く
 del review_list[-1]
-print(review_list)
+if len(review_list) == 0:
+    body_msg = f":100: All OK!\n{dog_marker}"
+    issue.create_comment(body_msg)
+else:
+    body_msg = f"You received {len(review_list)} indications.\n "\
+                f"{dog_marker}"
