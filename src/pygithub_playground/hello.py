@@ -55,7 +55,7 @@ reviewdog_result = subprocess.run(
     stdout=subprocess.PIPE
 )
 
-review_list = reviewdog_result.stdout.decode()
+review_list = reviewdog_result.stdout.decode().split('\n')
 # 末尾改行があるため取り除く
 del review_list[-1]
 if len(review_list) == 0:
