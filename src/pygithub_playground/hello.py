@@ -28,7 +28,9 @@ pr = issue.as_pull_request()
 comment_list = list(issue.get_comments())
 comment_list += list(pr.get_review_comments())
 
-dog_marker = '<sub>reported by [reviewdog](https://github.com/reviewdog/reviewdog) :dog:</sub>'
+dog_marker = \
+    '<sub>reported by [reviewdog](https://github.com/reviewdog/reviewdog) '\
+    ':dog:</sub>'
 
 for comment in comment_list:
     print(comment.id, comment.body)
