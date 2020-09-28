@@ -6,3 +6,7 @@ if __name__ == '__main__':
     print(fizzbuzz(6))
     print(fizzbuzz(15))
     print(fizzbuzz(11))
+
+import os
+import sys
+print('heololo')
