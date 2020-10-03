@@ -28,7 +28,9 @@ pr = issue.as_pull_request()
 comment_list = list(issue.get_comments())
 comment_list += list(pr.get_review_comments())
 
-dog_marker = '<sub>reported by [reviewdog](https://github.com/reviewdog/reviewdog) :dog:</sub>'
+dog_marker = \
+    '<sub>reported by [reviewdog](https://github.com/reviewdog/reviewdog) '\
+    ':dog:</sub>'
 
 for comment in comment_list:
     print(comment.id, comment.body)
@@ -53,4 +55,12 @@ reviewdog_result = subprocess.run(
     stdout=subprocess.PIPE
 )
 
-print(reviewdog_result.stdout.decode())
+review_list = reviewdog_result.stdout.decode().split('\n')
+# 末尾改行があるため取り除く
+del review_list[-1]
+if len(review_list) == 0:
+    body_msg = f":100: All OK!\n{dog_marker}"
+    issue.create_comment(body_msg)
+else:
+    body_msg = f"You received {len(review_list)} indications.\n "\
+                f"{dog_marker}"
