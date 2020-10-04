@@ -5,7 +5,7 @@ name: default
 steps:
 - name: reviewdog
   pull: always
-  image: yashikab/mydog:python
+  image: yashikab/mydog:python-dev
   environment:
     DOCKER_API_VERSION: 1.39
     PRIVATE_KEY:
