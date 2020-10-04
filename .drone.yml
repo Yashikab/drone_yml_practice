@@ -16,7 +16,7 @@ steps:
       from_secret: installation_id
   commands:
     # - rp_reviewdog ./src/
-    - python /src/rp_reviewdog.py --dir=./src
+    - python /src/rp_reviewdog.py ./src
     # - python /src/module/gettoken.py
     # - export REVIEWDOG_GITHUB_API_TOKEN=$(cat /src/token.conf)
     # - flake8 ./src/ | reviewdog -reporter=github-pr-review -f=pep8 -diff="git diff master"
