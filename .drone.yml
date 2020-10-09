@@ -9,14 +9,14 @@ steps:
   environment:
     DOCKER_API_VERSION: 1.39
     PRIVATE_KEY:
-      from_secret: github_pri_key
+      from_secret: private_key
     APP_ID:
       from_secret: app_id
     INSTALLATION_ID:
       from_secret: installation_id
   commands:
-    - rp_reviewdog --dir ./src
-    # - python /src/rp_reviewdog.py --dir=./src
+    # - rp_reviewdog ./src/
+    # - python /src/rp_pytest.py ./src
     # - python /src/module/gettoken.py
     # - export REVIEWDOG_GITHUB_API_TOKEN=$(cat /src/token.conf)
     # - flake8 ./src/ | reviewdog -reporter=github-pr-review -f=pep8 -diff="git diff master"
@@ -27,7 +27,7 @@ steps:
     # - ls -l /src
     # - rp_reviewdog src/
     # - pr_comment content
-    # - rp_pytest src/
+    - rp_pytest src/
   when:
     event:
       - pull_request
