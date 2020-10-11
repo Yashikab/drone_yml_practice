@@ -15,8 +15,9 @@ steps:
     INSTALLATION_ID:
       from_secret: installation_id
   commands:
-    # - rp_reviewdog ./src/
-    # - python /src/rp_pytest.py ./src
+    - rp_reviewdog ./src/
+    - rp_pytest ./src/
+    - python /src/pr_comment.py ./src/hello.md
     # - python /src/module/gettoken.py
     # - export REVIEWDOG_GITHUB_API_TOKEN=$(cat /src/token.conf)
     # - flake8 ./src/ | reviewdog -reporter=github-pr-review -f=pep8 -diff="git diff master"
@@ -27,7 +28,7 @@ steps:
     # - ls -l /src
     # - rp_reviewdog src/
     # - pr_comment content
-    - rp_pytest src/
+    # - rp_pytest src/
   when:
     event:
       - pull_request
