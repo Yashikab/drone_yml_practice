@@ -5,7 +5,8 @@ name: default
 steps:
 - name: reviewdog
   pull: always
-  image: yashikab/mydog:python-dev
+  # image: yashikab/mydog:python-dev
+  image: mysql
   environment:
     DOCKER_API_VERSION: 1.39
     PRIVATE_KEY:
@@ -15,9 +16,11 @@ steps:
     INSTALLATION_ID:
       from_secret: installation_id
   commands:
-    - rp_reviewdog ./src/
-    - rp_pytest ./src/
-    - python /src/pr_comment.py ./src/hello.md
+    - sleep 15
+    - mysql -u root -h database --execute="SELECT VERSION()"
+    # - rp_reviewdog ./src/
+    # - rp_pytest ./src/
+    # - python /src/pr_comment.py ./src/hello.md
     # - python /src/module/gettoken.py
     # - export REVIEWDOG_GITHUB_API_TOKEN=$(cat /src/token.conf)
     # - flake8 ./src/ | reviewdog -reporter=github-pr-review -f=pep8 -diff="git diff master"
@@ -32,3 +35,10 @@ steps:
   when:
     event:
       - pull_request
+
+services:
+  - name: database
+    image: mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: test
