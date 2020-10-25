@@ -16,7 +16,7 @@ steps:
     INSTALLATION_ID:
       from_secret: installation_id
   commands:
-    - sleep 15
+    - sleep 30
     - mysql -u root -h database
     # - rp_reviewdog ./src/
     # - rp_pytest ./src/
