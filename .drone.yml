@@ -40,7 +40,7 @@ services:
 - name: testmysql
   image: mysql
   environment:
-    # MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     MYSQL_DATABASE: test_db
     MYSQL_USER: 'test_user'
     MYSQL_PASSWORD: 'test_pw'
