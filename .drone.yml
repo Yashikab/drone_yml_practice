@@ -18,7 +18,7 @@ steps:
   commands:
     - sleep 30
     # - mysql -u root -h testmysql -D test_db
-    - mysql -u test_user -h testmysql --password=test_pw
+    - mysql -u test_user -h testmysql --password=test_pw -D test_db
     # - rp_reviewdog ./src/
     # - rp_pytest ./src/
     # - python /src/pr_comment.py ./src/hello.md
