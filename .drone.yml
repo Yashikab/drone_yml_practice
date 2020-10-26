@@ -17,7 +17,7 @@ steps:
       from_secret: installation_id
   commands:
     - sleep 30
-    - mysql -u root -h database
+    - mysql -u test_db -h testmysql --password=test_pw -D test_db
     # - rp_reviewdog ./src/
     # - rp_pytest ./src/
     # - python /src/pr_comment.py ./src/hello.md
@@ -37,8 +37,10 @@ steps:
       - pull_request
 
 services:
-- name: database
+- name: testmysql
   image: mysql
   environment:
-    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    MYSQL_DATABASE: test
+    # MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_DATABASE: test_db
+    MYSQL_USER: 'test_user'
+    MYSQL_PASSWORD: 'test_pw'
