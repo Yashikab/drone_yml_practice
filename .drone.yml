@@ -17,7 +17,8 @@ steps:
       from_secret: installation_id
   commands:
     - sleep 30
-    - mysql -u test_db -h testmysql --password=test_pw -D test_db
+    - mysql -u root -h testmysql
+    # - mysql -u test_db -h testmysql --password=test_pw -D test_db
     # - rp_reviewdog ./src/
     # - rp_pytest ./src/
     # - python /src/pr_comment.py ./src/hello.md
