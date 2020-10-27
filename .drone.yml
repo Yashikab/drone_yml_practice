@@ -19,8 +19,6 @@ steps:
     - sleep 30
     # - mysql -u root -h testmysql -D test_db
     - mysql -u test_user -h testmysql --password=test_pw -D test_db
-    # - rp_reviewdog ./src/
-    # - rp_pytest ./src/
     # - python /src/pr_comment.py ./src/hello.md
     # - python /src/module/gettoken.py
     # - export REVIEWDOG_GITHUB_API_TOKEN=$(cat /src/token.conf)
@@ -30,9 +28,9 @@ steps:
     # - sh test.sh
     # - which pr_comment
     # - ls -l /src
-    # - rp_reviewdog src/
-    # - pr_comment content
-    # - rp_pytest src/
+    - rp_reviewdog src/
+    - pr_comment content
+    - rp_pytest src/
   when:
     event:
       - pull_request
