@@ -29,7 +29,7 @@ steps:
     # - which pr_comment
     # - ls -l /src
     - rp_reviewdog src/
-    - pr_comment content
+    - pr_comment src/hello.md
     - rp_pytest src/
   when:
     event:
